@@ -4,10 +4,23 @@ from scrapy.selector import HtmlXPathSelector
 class DmozSpider(scrapy.Spider):
     name = "scp"
     allowed_domains = ["scp.org"]
+
     start_urls = [
-        "http://scp-wiki-cn.wikidot.com/scp-cn-001",
-        "http://scp-wiki-cn.wikidot.com/scp-cn-002"
+        # "http://scp-wiki-cn.wikidot.com/scp-cn-001",
+        # "http://scp-wiki-cn.wikidot.com/scp-cn-002"
     ]
+
+    url_lens = ""
+    i = 1
+    while i < 999:
+        if len(str(i)) == 1:
+            url_lens = "00" + str(i)
+        elif len(str(i)) == 2:
+            url_lens = "0" + str(i)
+        elif len(str(i)) == 3:
+            url_lens = str(i);
+        start_urls.append('http://scp-wiki-cn.wikidot.com/scp-cn-'+ url_lens)
+        i = i + 1
 
     def parse(self, response):
         hxs = HtmlXPathSelector(response)
@@ -41,3 +54,5 @@ class DmozSpider(scrapy.Spider):
         # filename = response.url.split("/")[-2]
         # with open(filename, 'wb') as f:
         #     f.write(a_page)
+
+
