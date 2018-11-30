@@ -25,14 +25,13 @@ class ScpPipeline(object):
         try:
             # 插入数据
             self.cursor.execute(
-                """insert into scp_table(id, name, content, img )
-                value (%s, %s, %s, %s)""",
-                (item['id'],
-                 item['name'],
+                """insert into scp_table(name, content, imgs)
+                value ( %s, %s, %s)""",
+                (item['name'],
                  item['content'],
-                 item['imgs'],))
+                 item['imgs']))
 
-            # 提交sql语句
+            # 提交sql语SelectorList句
             self.connect.commit()
 
         except Exception as error:
