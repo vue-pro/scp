@@ -15,18 +15,18 @@ SPIDER_MODULES = ['scp.spiders']
 NEWSPIDER_MODULE = 'scp.spiders'
 
 MYSQL_HOST = '118.190.147.198'
-MYSQL_DBNAME = 'scp_database'
+MYSQL_DBNAME = 'scp'
 MYSQL_USER = 'root'
-MYSQL_PASSWD = 'aAbsq123'
+MYSQL_PASSWD = '123456'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scp (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 
 ITEM_PIPELINES = {
-    'scp.pipelines.ScpPipeline': 100,
+    'scp.pipelines.ScpPipeline': 300,
 }
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
